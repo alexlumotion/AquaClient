@@ -57,4 +57,10 @@ public class TextureSenderClient : MonoBehaviour
             Debug.LogError($"❌ [CLIENT] Помилка відправки: {ex.Message}");
         }
     }
+
+    public void SetClientStr(string clientName)
+    {
+        clientId = clientName;
+    }
+
 }

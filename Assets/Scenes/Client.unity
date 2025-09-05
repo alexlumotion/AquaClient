@@ -530,7 +530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dfe2b80e8c964d23a504b33701f9058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serverIP: 192.168.0.133
+  serverIP: 192.168.68.103
   serverPort: 5005
   textureToSend: {fileID: 2800000, guid: f9de0298b099b4a859069ff608dfd380, type: 3}
   clientId: client4
@@ -557,9 +557,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df8234bcc9894231beb685d98de377f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 0}
+  meshRenderer: {fileID: 1962676512}
   originalTexture: {fileID: 2800000, guid: 967ef6bcbd2f241b88fc868cb31a6624, type: 3}
   cloneTexture: {fileID: 0}
+  texturePainter: {fileID: 963194229}
 --- !u!95 &338407637
 Animator:
   serializedVersion: 5
@@ -784,7 +785,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 429532742}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 963194229}
+        m_TargetAssemblyTypeName: TexturePainter, Assembly-CSharp
+        m_MethodName: Clear
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &429532742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -957,6 +970,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 458789842}
   m_CullTransparentMesh: 1
+--- !u!1 &488447233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5375366536887450782, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
+  m_PrefabInstance: {fileID: 1028379105}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &488447235 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2154389988850403399, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
+  m_PrefabInstance: {fileID: 1028379105}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &488447236
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488447233}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7539840428639214628, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
 --- !u!1 &501582324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,6 +1365,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 333737048}
+        m_TargetAssemblyTypeName: TextureSenderClient, Assembly-CSharp
+        m_MethodName: SetClientStr
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: client5
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &576360017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1625,6 +1682,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661958154}
   m_CullTransparentMesh: 1
+--- !u!1 &685501532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5375366536887450782, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
+  m_PrefabInstance: {fileID: 946946692}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &685501534 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2154389988850403399, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
+  m_PrefabInstance: {fileID: 946946692}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &685501535
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685501532}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7539840428639214628, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,7 +2060,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 745855872}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1231641976}
+        m_TargetAssemblyTypeName: TextureSender, Assembly-CSharp
+        m_MethodName: SendTexture
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &745855872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2986,6 +3087,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1431781002}
+    - targetCorrespondingSourceObject: {fileID: 5375366536887450782, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 685501535}
   m_SourcePrefab: {fileID: 100100000, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
 --- !u!1 &963194225
 GameObject:
@@ -3447,6 +3551,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2144868766}
+    - targetCorrespondingSourceObject: {fileID: 5375366536887450782, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1498360230}
   m_SourcePrefab: {fileID: 100100000, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
 --- !u!1001 &1028379105
 PrefabInstance:
@@ -3539,6 +3646,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1962807799}
+    - targetCorrespondingSourceObject: {fileID: 5375366536887450782, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 488447236}
   m_SourcePrefab: {fileID: 100100000, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
 --- !u!1001 &1055231975
 PrefabInstance:
@@ -3631,6 +3741,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
       insertIndex: -1
       addedObject: {fileID: 338407636}
+    - targetCorrespondingSourceObject: {fileID: 5375366536887450782, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1962676513}
   m_SourcePrefab: {fileID: 100100000, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
 --- !u!1 &1107109248
 GameObject:
@@ -4402,6 +4515,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 333737048}
+        m_TargetAssemblyTypeName: TextureSenderClient, Assembly-CSharp
+        m_MethodName: SetClientStr
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: client3
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1279858785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4561,6 +4686,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1290824363}
   m_CullTransparentMesh: 1
+--- !u!1 &1349274054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5375366536887450782, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
+  m_PrefabInstance: {fileID: 1873762972}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1349274056 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2154389988850403399, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
+  m_PrefabInstance: {fileID: 1873762972}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1349274057
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349274054}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7539840428639214628, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
 --- !u!1 &1426398261
 GameObject:
   m_ObjectHideFlags: 0
@@ -4716,9 +4873,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df8234bcc9894231beb685d98de377f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 0}
+  meshRenderer: {fileID: 685501534}
   originalTexture: {fileID: 2800000, guid: 967ef6bcbd2f241b88fc868cb31a6624, type: 3}
   cloneTexture: {fileID: 0}
+  texturePainter: {fileID: 963194229}
 --- !u!95 &1431781003
 Animator:
   serializedVersion: 5
@@ -4740,6 +4898,38 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1498360227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5375366536887450782, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
+  m_PrefabInstance: {fileID: 1003895898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1498360229 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2154389988850403399, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
+  m_PrefabInstance: {fileID: 1003895898}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1498360230
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498360227}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7539840428639214628, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
 --- !u!1 &1523387788
 GameObject:
   m_ObjectHideFlags: 0
@@ -5001,6 +5191,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BOAT_01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 85520932d5211854aa51c52fae019af3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2725643171639955535, guid: 85520932d5211854aa51c52fae019af3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -5067,9 +5261,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df8234bcc9894231beb685d98de377f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 0}
+  meshRenderer: {fileID: 1349274056}
   originalTexture: {fileID: 2800000, guid: 967ef6bcbd2f241b88fc868cb31a6624, type: 3}
   cloneTexture: {fileID: 0}
+  texturePainter: {fileID: 963194229}
 --- !u!95 &1608519991
 Animator:
   serializedVersion: 5
@@ -5393,6 +5588,18 @@ MonoBehaviour:
           m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 333737048}
+        m_TargetAssemblyTypeName: TextureSenderClient, Assembly-CSharp
+        m_MethodName: SetClientStr
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: client4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1703805135
@@ -5926,6 +6133,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1608519990}
+    - targetCorrespondingSourceObject: {fileID: 5375366536887450782, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1349274057}
   m_SourcePrefab: {fileID: 100100000, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
 --- !u!1 &1881344620
 GameObject:
@@ -6061,6 +6271,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1881344620}
   m_CullTransparentMesh: 1
+--- !u!1 &1962676510 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5375366536887450782, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
+  m_PrefabInstance: {fileID: 1055231975}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1962676512 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2154389988850403399, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
+  m_PrefabInstance: {fileID: 1055231975}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1962676513
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962676510}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7539840428639214628, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
 --- !u!1 &1962807796 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 730eb8d4c68e84203b3b55768fcdcb07, type: 3}
@@ -6104,9 +6346,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df8234bcc9894231beb685d98de377f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 0}
+  meshRenderer: {fileID: 488447235}
   originalTexture: {fileID: 2800000, guid: 967ef6bcbd2f241b88fc868cb31a6624, type: 3}
   cloneTexture: {fileID: 0}
+  texturePainter: {fileID: 963194229}
 --- !u!1 &1966045179
 GameObject:
   m_ObjectHideFlags: 0
@@ -6277,6 +6520,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 333737048}
+        m_TargetAssemblyTypeName: TextureSenderClient, Assembly-CSharp
+        m_MethodName: SetClientStr
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: client1
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2031842369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6408,6 +6663,18 @@ MonoBehaviour:
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 333737048}
+        m_TargetAssemblyTypeName: TextureSenderClient, Assembly-CSharp
+        m_MethodName: SetClientStr
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: client2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2043311113
@@ -6939,9 +7206,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df8234bcc9894231beb685d98de377f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 0}
+  meshRenderer: {fileID: 1498360229}
   originalTexture: {fileID: 2800000, guid: 967ef6bcbd2f241b88fc868cb31a6624, type: 3}
   cloneTexture: {fileID: 0}
+  texturePainter: {fileID: 963194229}
 --- !u!95 &2144868767
 Animator:
   serializedVersion: 5

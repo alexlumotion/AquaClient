@@ -187,5 +187,20 @@ public class TexturePainter : MonoBehaviour
         else { brushColor = brushColor5; }
     }
 
+    public void SetFish(Renderer tRender, Texture2D tTexture)
+    {
+        targetRenderer = tRender;
+        originalTexture = tTexture;
+        CloneTexture();
+        AssignTextureToMaterial();
+        EnsureMeshCollider();
+    }
+
+    public void Clear()
+    { 
+        CloneTexture();
+        AssignTextureToMaterial();
+        EnsureMeshCollider();
+    }
 
 }

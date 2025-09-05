@@ -21,7 +21,7 @@ public class TextureSender : MonoBehaviour
         }
     }
     
-    void SendTexture()
+    public void SendTexture()
     {
         if (texturePainter == null || textureSenderClient == null)
         {
