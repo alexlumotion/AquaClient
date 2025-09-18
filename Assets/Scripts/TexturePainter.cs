@@ -12,16 +12,9 @@ public class TexturePainter : MonoBehaviour
     public Color brushColor = Color.red;
     //[Range(1, 64)]
 
-    public Color brushColor1 = Color.red;
-    //[Range(1, 64)]
-    public Color brushColor2 = Color.red;
-    //[Range(1, 64)]
-    public Color brushColor3 = Color.red;
-    //[Range(1, 64)]
-    public Color brushColor4 = Color.red;
-    //[Range(1, 64)]
-    public Color brushColor5 = Color.red;
-    //[Range(1, 64)]
+    public Color[] brushColors;
+
+
     public int brushSize = 8;
 
     private Camera mainCamera;
@@ -180,11 +173,7 @@ public class TexturePainter : MonoBehaviour
 
     public void SetBrushColor(int id)
     {
-        if (id == 0) { brushColor = brushColor1; }
-        else if (id == 1) { brushColor = brushColor2; }
-        else if (id == 2) { brushColor = brushColor3; }
-        else if (id == 3) { brushColor = brushColor4; }
-        else { brushColor = brushColor5; }
+        brushColor = brushColors[id];
     }
 
     public void SetFish(Renderer tRender, Texture2D tTexture)
