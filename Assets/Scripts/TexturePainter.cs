@@ -10,14 +10,14 @@ public class TexturePainter : MonoBehaviour
 
     [Header("Налаштування пензля")]
     public Color brushColor = Color.red;
-    //[Range(1, 64)]
-
     public Color[] brushColors;
-
-
     public int brushSize = 8;
 
     private Camera mainCamera;
+
+    // --- NEW: стан для інтерполяції ---
+    private bool hasLastUV = false;
+    private Vector2 lastUV;
 
     void Start()
     {
@@ -31,10 +31,39 @@ public class TexturePainter : MonoBehaviour
 
     void Update()
     {
+        // Початок малювання — фіксуємо першу точку
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (TryGetUVUnderCursor(out var uv))
+            {
+                PaintAtUV(uv);
+                lastUV = uv;
+                hasLastUV = true;
+            }
+        }
+
+        // Продовження малювання — інтерполюємо між lastUV і поточним UV
         if (Input.GetMouseButton(0))
         {
-            Debug.Log("🖱 Натиснута ліва кнопка миші");
-            TryPaintUnderCursor();
+            if (TryGetUVUnderCursor(out var uv))
+            {
+                if (hasLastUV)
+                {
+                    PaintLineUV(lastUV, uv); // суцільний мазок
+                }
+                else
+                {
+                    PaintAtUV(uv);
+                    hasLastUV = true;
+                }
+                lastUV = uv;
+            }
+        }
+
+        // Кінець малювання — скидаємо стан
+        if (Input.GetMouseButtonUp(0))
+        {
+            hasLastUV = false;
         }
     }
 
@@ -87,30 +116,64 @@ public class TexturePainter : MonoBehaviour
         }
     }
 
-    // 🎯 Обробка кліку миші та малювання
+    // --- NEW: отримаємо UV під курсором без малювання ---
+    bool TryGetUVUnderCursor(out Vector2 uv)
+    {
+        uv = default;
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            Renderer rend = hit.collider.GetComponent<Renderer>();
+            if (rend == targetRenderer)
+            {
+                uv = hit.textureCoord;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // --- NEW: промальовуємо лінію між двома UV з кроком у пікселях ---
+    void PaintLineUV(Vector2 uvA, Vector2 uvB)
+    {
+        if (textureToPaint == null) return;
+
+        // Переведемо у пікселі, щоб крок був відносно розміру пензля
+        Vector2 pA = new Vector2(uvA.x * textureToPaint.width,  uvA.y * textureToPaint.height);
+        Vector2 pB = new Vector2(uvB.x * textureToPaint.width,  uvB.y * textureToPaint.height);
+
+        float distPx = Vector2.Distance(pA, pB);
+        float stepPx = Mathf.Max(1f, brushSize * 0.4f); // ~0.4 радіуса пензля
+        int steps = Mathf.CeilToInt(distPx / stepPx);
+
+        // Якщо точки майже співпали — просто намалюємо в кінцевій
+        if (steps <= 1)
+        {
+            PaintAtUV(uvB);
+            return;
+        }
+
+        // Пройтись рівномірно від A до B
+        float inv = 1f / steps;
+        for (int s = 1; s <= steps; s++)
+        {
+            float t = s * inv;
+            Vector2 uv = Vector2.Lerp(uvA, uvB, t);
+            PaintAtUV(uv);
+        }
+    }
+
+    // 🎯 Малювання по UV (твоя реалізація — без змін логіки)
     void TryPaintUnderCursor()
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            Debug.Log($"🎯 Потрапили в: {hit.collider.name}");
-            Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.green, 2f);
-            Debug.Log($"🧭 UV hit: {hit.textureCoord}");
-
             Renderer rend = hit.collider.GetComponent<Renderer>();
             if (rend == targetRenderer)
             {
-                Debug.Log("✅ Співпадіння з цільовим Renderer — малюємо...");
                 PaintAtUV(hit.textureCoord);
             }
-            else
-            {
-                Debug.LogWarning("⚠️ Потрапили в інший Renderer");
-            }
-        }
-        else
-        {
-            Debug.Log("🔭 Raycast не потрапив ні в що");
         }
     }
 
@@ -119,8 +182,6 @@ public class TexturePainter : MonoBehaviour
     {
         int x = Mathf.RoundToInt(uv.x * textureToPaint.width);
         int y = Mathf.RoundToInt(uv.y * textureToPaint.height);
-
-        Debug.Log($"🎨 Малюємо в UV: ({uv.x:0.000}, {uv.y:0.000}) → Pixel: ({x}, {y})");
 
         float sqrRadius = brushSize * brushSize;
 
@@ -142,21 +203,16 @@ public class TexturePainter : MonoBehaviour
         }
 
         textureToPaint.Apply();
-        Debug.Log("🖌 Застосовано зміни до текстури");
     }
 
-    // Додати в TexturePainter.cs
     public Texture2D GetPaintedTextureCopy()
     {
         Texture2D copy = new Texture2D(textureToPaint.width, textureToPaint.height, textureToPaint.format, false);
         copy.SetPixels(textureToPaint.GetPixels());
         copy.Apply();
-        Debug.Log("📤 Створено копію поточної текстури для передачі");
         return copy;
     }
 
-
-    // 🧪 Закрасити верхній лівий кут — опціонально
     void DrawTestArea()
     {
         for (int x = 0; x < 200; x++)
@@ -167,9 +223,7 @@ public class TexturePainter : MonoBehaviour
             }
         }
         textureToPaint.Apply();
-        Debug.Log("🟪 Закрасили верхній лівий кут у magenta — тест");
     }
-
 
     public void SetBrushColor(int id)
     {
@@ -186,10 +240,9 @@ public class TexturePainter : MonoBehaviour
     }
 
     public void Clear()
-    { 
+    {
         CloneTexture();
         AssignTextureToMaterial();
         EnsureMeshCollider();
     }
-
 }
