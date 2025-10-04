@@ -3,7 +3,8 @@ using UnityEngine;
 public class ButtonAnimationController : MonoBehaviour
 {
 
-    public Animator animator;
+    public Animator buttonAnimator;
+    public Animator bubblesAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -16,10 +17,14 @@ public class ButtonAnimationController : MonoBehaviour
     {
 
     }
-    
+
     public void PlayAnim()
     {
-        animator.SetTrigger("Play");
+        buttonAnimator.SetTrigger("Play");
+        if (bubblesAnimator)
+        {
+            bubblesAnimator.SetTrigger("Play");
+        }
     }
 
 
